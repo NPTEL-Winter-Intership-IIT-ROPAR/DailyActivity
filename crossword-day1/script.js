@@ -35,8 +35,9 @@ crossword.forEach((row, r) => {
 });
 
 function checkAnswers() {
-  const inputs = document.querySelectorAll("input");
+  const inputs = document.querySelectorAll(".cw-cell");
   let correct = true;
+  let correctCount = 0;
 
   inputs.forEach(input => {
     if (input.value.toUpperCase() !== input.dataset.correct) {
@@ -44,15 +45,24 @@ function checkAnswers() {
       input.style.background = "#ffdddd";
     } else {
       input.style.background = "#ddffdd";
+      correctCount++;
     }
   });
 
-  document.getElementById("result").innerText =
-  correct
-    ? "✅ Excellent! All answers are correct. See you tomorrow for Day 2!"
-    : "❌ Some answers are incorrect. Please review the clues and try again.";
+  const total = inputs.length;
+  const status = correctCount === total ? "Completed" : "Incomplete";
 
+  document.getElementById("result").innerText =
+    status === "Completed"
+      ? "✅ Excellent! All answers are correct. See you tomorrow for Day 2!"
+      : "❌ Some answers are incorrect. Please review the clues and try again.";
+
+  autoSubmitToGoogleSheet(
+    `${correctCount}/${total}`,
+    status
+  );
 }
+
 
 function autoSubmitToGoogleSheet(score, status) {
   const studentNameInput = document.getElementById("studentName");
