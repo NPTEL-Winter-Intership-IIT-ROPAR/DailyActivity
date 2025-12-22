@@ -53,3 +53,33 @@ function checkAnswers() {
     : "❌ Some answers are incorrect. Please review the clues and try again.";
 
 }
+
+function autoSubmitToGoogleSheet(score, status) {
+  const studentNameInput = document.getElementById("studentName");
+  const studentName = studentNameInput && studentNameInput.value.trim();
+
+  if (!studentName) {
+    alert("Please enter your name before submitting.");
+    return;
+  }
+
+  const payload = {
+    name: studentName,
+    day: "Day 1",
+    score: score,
+    status: status
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbypBKbBnTNpSAM7g5QsbJkhTHKJzS1U5JQkdeXA-PyKxr-4XxZpAADhXdR_4lsHBKwq/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  console.log("Auto-submitted to Google Sheets");
+}
+
+
