@@ -2,45 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Day 1 Crossword Challenge</title>
+  <title>Day 1 – Fill in the Blanks</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div class="container">
 
-  <h1>🧩 Day 1 Crossword Challenge</h1>
-  <p class="subtitle">Theme: Getting Started</p>
-  <input
-  type="text"
-  id="studentName"
-  placeholder="Enter your full name"
-  style="padding:8px; width:260px; margin-bottom:15px;"
-/>
-  <div id="crossword"></div>
+    <h1>📝 Day 1 – Fill in the Blanks</h1>
+    <p class="subtitle">Theme: Getting Started</p>
 
-  <button onclick="checkAnswers()">Check Answers</button>
-  <p id="result"></p>
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Enter your full name"
+      required
+    />
+
+    <form id="quizForm">
+
+      <div class="question">
+        All questions are associated to todays orientation session.
+        1. Daily academic practice of marking presence is called
+        <input type="text" data-answer="attendance" />
+      </div>
+
+      <div class="question">
+        2. The introductory process for new students is called
+        <input type="text" data-answer="orientation" />
+      </div>
+
+      <div class="question">
+        3. The education design and innovation lab who is organizing this inetrship for you all
+        <input type="text" data-answer="vicharanashala" />
+      </div>
+
+      <div class="question">
+        4. The institute which is hosting this NPTEL winter intership for you all.
+        <input type="text" data-answer="iit ropar" />
+      </div>
+
+      <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+  </div>
 
   <script src="script.js"></script>
-
-  <div class="instructions">
-  <h2>📘 Instructions</h2>
-  <p>
-    Fill in the crossword using the clues below. Each box contains one letter.
-    Once all words are filled, click <strong>Check Answers</strong>.
-  </p>
-</div>
-
-<div class="clues">
-  <h2>🧠 Clues</h2>
-
-  <h3>Across</h3>
-  <ol>
-    <li>The process that helps students understand rules and systems at the start.</li>
-    <li>Daily academic practice of marking presence.</li>
-    <li>The education design and innovation lab.</li>
-  </ol>
-
-</div>
-
 </body>
 </html>
