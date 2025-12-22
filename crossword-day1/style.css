@@ -13,11 +13,23 @@ h1 {
 }
 
 #crossword {
-  display: grid;
-  grid-template-columns: repeat(14, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
   gap: 4px;
-  justify-content: center;
-  margin: 30px auto;
+}
+
+.cw-cell {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .cell {
@@ -69,3 +81,4 @@ button {
 .clues ol {
   padding-left: 20px;
 }
+
