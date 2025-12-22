@@ -5,7 +5,7 @@ const gridSize = 14;
 // letters represent correct answers
 const crossword = [
   // 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
-  ["", "", "", "O","R","I","E","N","T","A","T","I","O","N","",""],
+  [ "O","R","I","E","N","T","A","T","I","O","N","",""],
 
   ["", "", "", "", "", "I","", "","","", "", "", "", "", "", ""],
 
