@@ -1,86 +1,54 @@
-const gridSize = 14;
+function submitQuiz() {
+  const name = document.getElementById("studentName").value.trim();
 
-// Crossword layout
-// "" = empty block
-// letters represent correct answers
-const crossword = [
-  ["O","R","I","E","N","T","A","T","I","O","N"],
-  ["A","T","T","E","N","D","A","N","C","E"],
-  ["V","I","C","H","A","R","A","N","A","S","H","A","L","A"]
-];
-
-
-
-
-const crosswordDiv = document.getElementById("crossword");
-
-// Render grid
-const crosswordDiv = document.getElementById("crossword");
-crosswordDiv.innerHTML = "";
-
-crossword.forEach(row => {
-  const rowDiv = document.createElement("div");
-  rowDiv.className = "row";
-
-  row.forEach(letter => {
-    const cell = document.createElement("input");
-    cell.maxLength = 1;
-    cell.classList.add("cw-cell");
-    cell.dataset.correct = letter;
-    rowDiv.appendChild(cell);
-  });
-
-  crosswordDiv.appendChild(rowDiv);
-});
-
-
-function checkAnswers() {
-  const inputs = document.querySelectorAll(".cw-cell");
-  let correct = true;
-  let correctCount = 0;
-
-  inputs.forEach(input => {
-    if (input.value.toUpperCase() !== input.dataset.correct) {
-      correct = false;
-      input.style.background = "#ffdddd";
-    } else {
-      input.style.background = "#ddffdd";
-      correctCount++;
-    }
-  });
-
-  const total = inputs.length;
-  const status = correctCount === total ? "Completed" : "Incomplete";
-
-  document.getElementById("result").innerText =
-    status === "Completed"
-      ? "✅ Excellent! All answers are correct. See you tomorrow for Day 2!"
-      : "❌ Some answers are incorrect. Please review the clues and try again.";
-
-  autoSubmitToGoogleSheet(
-    `${correctCount}/${total}`,
-    status
-  );
-}
-
-
-function autoSubmitToGoogleSheet(score, status) {
-  const studentNameInput = document.getElementById("studentName");
-  const studentName = studentNameInput && studentNameInput.value.trim();
-
-  if (!studentName) {
-    alert("Please enter your name before submitting.");
+  if (!name) {
+    alert("Please enter your full name.");
     return;
   }
 
+  const inputs = document.querySelectorAll("[data-answer]");
+  let correct = 0;
+  const answers = [];
+
+  inputs.forEach(input => {
+    const userAnswer = input.value.trim().toLowerCase();
+    const correctAnswer = input.dataset.answer.toLowerCase();
+
+    answers.push(userAnswer || "");
+
+    if (userAnswer === correctAnswer) {
+      correct++;
+      input.style.background = "#ddffdd";
+    } else {
+      input.style.background = "#ffdddd";
+    }
+  });
+
+  const totalQuestions = inputs.length;
+  const scoreValue = correct * 5;
+  const totalValue = totalQuestions * 5;
+  const score = `${scoreValue}/${totalValue}`;
+  const status = correct === totalQuestions ? "Completed" : "Incomplete";
+
+  document.getElementById("result").innerText =
+    `✅ You scored ${score}`;
+
+  submitToGoogleSheet(name, answers, score, status);
+}
+
+function submitToGoogleSheet(name, answers, score, status) {
   const payload = {
-    name: studentName,
+    name: name,
     day: "Day 1",
+    answer1: answers[0] || "",
+    answer2: answers[1] || "",
+    answer3: answers[2] || "",
+    answer4: answers[3] || "",
     score: score,
     status: status
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbypBKbBnTNpSAM7g5QsbJkhTHKJzS1U5JQkdeXA-PyKxr-4XxZpAADhXdR_4lsHBKwq/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxnf4DJlXNf60KvSrN2Zn-oonKcoqJJjz_gzHhI_B9h07mbPTJqNUAk9oU892RvtDe7/exec", {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -88,8 +56,4 @@ function autoSubmitToGoogleSheet(score, status) {
     },
     body: JSON.stringify(payload)
   });
-
-  console.log("Auto-submitted to Google Sheets");
 }
-
-
