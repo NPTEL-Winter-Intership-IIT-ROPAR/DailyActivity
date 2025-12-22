@@ -48,5 +48,8 @@ function checkAnswers() {
   });
 
   document.getElementById("result").innerText =
-    correct ? "✅ All answers correct! Well done!" : "❌ Some answers are incorrect. Try again!";
+  correct
+    ? "✅ Excellent! All answers are correct. See you tomorrow for Day 2!"
+    : "❌ Some answers are incorrect. Please review the clues and try again.";
+
 }
