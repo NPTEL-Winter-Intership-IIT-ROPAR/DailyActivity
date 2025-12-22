@@ -4,37 +4,35 @@ const gridSize = 14;
 // "" = empty block
 // letters represent correct answers
 const crossword = [
-  // 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
-  [ "O","R","I","E","N","T","A","T","I","O","N","",""],
+  ["O","R","I","E","N","T","A","T","I","O","N"],
+  ["A","T","T","E","N","D","A","N","C","E"],
+  ["V","I","C","H","A","R","A","N","A","S","H","A","L","A"]
+];
 
-  ["", "", "","A","T","T","E","N","D","A","N","C","E",""],
-
-  ["V","I","C","H","A","R","A","N","A","S","H","A","L","A"],
-
-  ];
 
 
 
 const crosswordDiv = document.getElementById("crossword");
 
 // Render grid
-crossword.forEach((row, r) => {
-  row.forEach((cell, c) => {
-    const div = document.createElement("div");
-    div.className = "cell";
+const crosswordDiv = document.getElementById("crossword");
+crosswordDiv.innerHTML = "";
 
-    if (cell === "") {
-      div.classList.add("block");
-    } else {
-      const input = document.createElement("input");
-      input.maxLength = 1;
-      input.dataset.correct = cell;
-      div.appendChild(input);
-    }
+crossword.forEach(row => {
+  const rowDiv = document.createElement("div");
+  rowDiv.className = "row";
 
-    crosswordDiv.appendChild(div);
+  row.forEach(letter => {
+    const cell = document.createElement("input");
+    cell.maxLength = 1;
+    cell.classList.add("cw-cell");
+    cell.dataset.correct = letter;
+    rowDiv.appendChild(cell);
   });
+
+  crosswordDiv.appendChild(rowDiv);
 });
+
 
 function checkAnswers() {
   const inputs = document.querySelectorAll(".cw-cell");
