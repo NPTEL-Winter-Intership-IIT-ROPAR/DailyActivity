@@ -13,7 +13,7 @@ const ANSWERS = {
 };
 
 // 🔗 Replace with your Google Apps Script Web App URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz65dLfdTzAkWXDfSMCyyFJ3mU51cgcIYLOs6jdEC5zBZZ7b2GR3txdcLrKt5R7FD7F/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzm_Eb4WZ1p9BpBXXB4zbCHWuSM0CAaL6T8GPM755VvwXDO1wzyApeWvhtbe0RNyA3q/exec";
 
 const form = document.getElementById("crosswordForm");
 const message = document.getElementById("message");
@@ -68,10 +68,13 @@ form.addEventListener("submit", async function (e) {
 
   try {
     await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: { "Content-Type": "application/json" }
-    });
+  method: "POST",
+  body: JSON.stringify(payload),
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"
+  }
+});
+
 
     message.textContent = `✅ Submitted! Your Score: ${score} / 20`;
     message.style.color = "#2ecc71";
