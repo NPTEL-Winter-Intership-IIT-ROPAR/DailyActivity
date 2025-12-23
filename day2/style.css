@@ -79,3 +79,29 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Correct / Incorrect feedback */
+
+.correct {
+  border: 2px solid #2ecc71 !important;
+  background-color: #eafaf1;
+}
+
+.incorrect {
+  border: 2px solid #e74c3c !important;
+  background-color: #fdecea;
+}
+
+.answer-feedback {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.answer-feedback.correct-text {
+  color: #2ecc71;
+}
+
+.answer-feedback.incorrect-text {
+  color: #e74c3c;
+}
+
