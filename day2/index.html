@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Today's Crossword</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🧩 Today's Crossword</h1>
+
+<div class="container">
+
+  <!-- Crossword Image -->
+  <div class="crossword-image">
+    <!-- Replace with your actual image file -->
+    <img src="crossword-today.png" alt="Today's Crossword">
+  </div>
+
+  <!-- Form -->
+  <form id="crosswordForm" class="form-section">
+
+    <h2>Participant Details</h2>
+
+    <div class="clue">
+      <label>Name</label>
+      <input type="text" name="Name" required>
+    </div>
+
+    <div class="clue">
+      <label>Email</label>
+      <input type="email" name="Email" required>
+    </div>
+
+    <h2>Across</h2>
+
+    <div class="clue">
+      <label>2.</label>
+      <small>Zoho application used for workplace communication</small>
+      <input type="text" name="Across_2" required>
+    </div>
+
+    <div class="clue">
+      <label>3.</label>
+      <small>Data type used to store text</small>
+      <input type="text" name="Across_3" required>
+    </div>
+
+    <div class="clue">
+      <label>5.</label>
+      <small>Central place for raising issues or tickets</small>
+      <input type="text" name="Across_5" required>
+    </div>
+
+    <div class="clue">
+      <label>6.</label>
+      <small>Represents true or false</small>
+      <input type="text" name="Across_6" required>
+    </div>
+
+    <div class="clue">
+      <label>7.</label>
+      <small>Full-stack you are learning</small>
+      <input type="text" name="Across_7" required>
+    </div>
+
+    <div class="clue">
+      <label>9.</label>
+      <small>Platform for MERN case studies</small>
+      <input type="text" name="Across_9" required>
+    </div>
+
+    <h2>Down</h2>
+
+    <div class="clue">
+      <label>1.</label>
+      <small>Stores multiple values together</small>
+      <input type="text" name="Down_1" required>
+    </div>
+
+    <div class="clue">
+      <label>2.</label>
+      <small>Used to view logs and debug output</small>
+      <input type="text" name="Down_2" required>
+    </div>
+
+    <div class="clue">
+      <label>4.</label>
+      <small>Named container for data</small>
+      <input type="text" name="Down_4" required>
+    </div>
+
+    <div class="clue">
+      <label>8.</label>
+      <small>Internship provider</small>
+      <input type="text" name="Down_8" required>
+    </div>
+
+    <button type="submit">Submit Answers</button>
+
+    <p id="message"></p>
+
+  </form>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
