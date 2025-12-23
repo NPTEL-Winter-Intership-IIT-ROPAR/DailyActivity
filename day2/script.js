@@ -13,7 +13,7 @@ const ANSWERS = {
 };
 
 // 🔗 Replace with your Google Apps Script Web App URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnf4DJlXNf60KvSrN2Zn-oonKcoqJJjz_gzHhI_B9h07mbPTJqNUAk9oU892RvtDe7/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqATCMAV12j9n9EjB3-d5ALZdyT0MVTDsgcBqhSN1gESznivdeUcD2trAOup6-k3oH/exec";
 
 const form = document.getElementById("crosswordForm");
 const message = document.getElementById("message");
