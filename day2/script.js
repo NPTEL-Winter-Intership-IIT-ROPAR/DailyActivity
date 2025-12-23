@@ -2,7 +2,7 @@
 const ANSWERS = {
   Across_2: "CLIQ",
   Across_3: "STRING",
-  Across_5: "SUPPORT_DESK",
+  Across_5: "SUPPORT DESK",
   Across_6: "BOOLEAN",
   Across_7: "MERN",
   Across_9: "VIBE",
